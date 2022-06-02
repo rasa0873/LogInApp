@@ -2,7 +2,7 @@
 LogIn, RecyclerView, GoogleMap Kotlin test App
 
 
-# Description
+## Description
 This Kotlin based Android app consists of the following parts:
 
      Log In (MainActivity)
@@ -10,4 +10,6 @@ This Kotlin based Android app consists of the following parts:
      Closer view of each item previously shown in ArrayList (MainActivityMap, MapFragment)
      
 
+
+![LoginApp_Login](https://user-images.githubusercontent.com/46427497/171608473-a2733089-e2ba-4231-aab0-4cc9a12575f3.png)
 
