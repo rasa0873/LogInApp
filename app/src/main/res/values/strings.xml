@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">LogIn App</string>
+    <string name="password">Password</string>
+    <string name="userid">UserId</string>
+
+    <string name="facebook_app_id">996864274336832</string>
+    <string name="fb_login_protocol_scheme">fb996864274336832</string>
+    <string name="facebook_client_token">0697e1275436c773f7961c80c82c7f25</string>
+
+    <string name="open_nav_drawer">Open Nav Drawer</string>
+    <string name="close_nav_drawer">Close Nav Drawer</string>
+
+    <string name="log_in">Log In</string>
+    <string name="olvid_su_clave">Olvidó su clave?</string>
+
+
+</resources>

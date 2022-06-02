@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+
+      tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/top_drawer_menu"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_smslogs"
+            android:icon="@drawable/black_event_note_24"
+            android:iconTint="@color/white"
+            android:iconTintMode="screen"
+            android:title="Buy Logs"/>
+        <item
+            android:id="@+id/drawer_service"
+            android:icon="@drawable/black_app_service_alt_24"
+            android:title="Service Status"/>
+
+        <item
+            android:id="@+id/drawer_config"
+            android:icon="@drawable/black_settings_24"
+            android:title="Setings"/>
+
+        <item
+            android:id="@+id/drawer_about"
+            android:icon="@drawable/black_info_24"
+            android:title="About"/>
+
+
+        <item android:title="Profile">
+            <menu>
+                 <item
+                    android:id="@+id/log_out_from_drawer"
+                    android:icon="@drawable/black_logout_24"
+                    android:title="Sign Out"/>
+
+            </menu>
+
+        </item>
+
+
+    </group>
+
+
+
+
+
+
+
+</menu>
