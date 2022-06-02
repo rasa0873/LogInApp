@@ -1,12 +1,17 @@
 package com.rasaapps.raul.loginapp.maps
 
+import android.accessibilityservice.GestureDescription
+import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.rasaapps.raul.loginapp.R
+
 
 class MainActivityMap : AppCompatActivity() {
 
@@ -15,7 +20,7 @@ class MainActivityMap : AppCompatActivity() {
     var passedInPrice : String? = null
 
 
-    private var btn2: Button? = null
+    lateinit var buyButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +33,26 @@ class MainActivityMap : AppCompatActivity() {
 
         var tvTitle : TextView = findViewById(R.id.product_title_in_detail)
         var tvDescription : TextView = findViewById(R.id.product_description_in_detail)
+        var tvPrice : TextView = findViewById(R.id.product_price_in_detail)
 
         tvTitle.text = passedInName
         tvDescription.text = passedInDescription
+        tvPrice.text = passedInPrice
 
-        btn2 = findViewById<Button>(R.id.btn2)
+        buyButton = findViewById(R.id.buy_button)
+        buyButton.setOnClickListener {
+            // Confirmation dialog window
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Buy")
+            builder.setMessage("Confirm your purchase?")
+            builder.setIcon(R.drawable.green_check_circle_24)
+            builder.setPositiveButton("OK"){dialog, id ->
+                dialog.dismiss()
+                finish()
+                 }
+            builder.setNegativeButton("Cancel"){dialog, id -> dialog.dismiss()}
+            builder.show()
+        }
 
         addFragment(MapFragment(), false, "Map")
     }
