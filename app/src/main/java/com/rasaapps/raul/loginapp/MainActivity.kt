@@ -143,11 +143,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun onSuccess(result: LoginResult) {
                 val userId = result.accessToken.userId
-                Log.d(TAG, "onSuccess: userId $userId")
 
                 val bundle = Bundle()
                 bundle.putString("fields", "id, email, first_name, last_name, gender,age_range")
-
 
                 //Graph API to access the data of user's facebook account
                 val request = GraphRequest.newMeRequest(
@@ -155,12 +153,9 @@ class MainActivity : AppCompatActivity() {
                 ) { fbObject, response ->
                     Log.v("Login Success", response.toString())
 
-
                     //For safety measure enclose the request with try and catch
                     try {
-                        Log.d(TAG, "onSuccess: fbObject $fbObject")
                         val name = fbObject?.getString("name")
-                        Log.i(TAG, "onSuccess: Whole name $name")
                         if (name != null) {
                             // Save Fb user name to Shared Pref
                             saveToSharedPref(name)
@@ -222,7 +217,7 @@ class MainActivity : AppCompatActivity() {
                 val value = it.data?.getStringExtra("RESPONSE_FROM_LIST")
 
                 if (value.equals("logout")){
-                    Log.i(TAG, "Proceed to logout")
+                    // Proceed to logout
                     fbLogOut()
                     if (checkGoogleLogIn())
                           logOutFromGoogle()
