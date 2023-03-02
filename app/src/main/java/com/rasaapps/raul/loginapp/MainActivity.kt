@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -27,14 +26,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
-import com.rasaapps.raul.loginapp.maps.MainActivityMap
 import org.json.JSONException
 
 
 class MainActivity : AppCompatActivity() {
 
     var TAG : String = "ETIQUETA"
-    val SHARED_LOGGEDIN_NAME = "Logged In Name"
+    private val SHARED_LOGGEDIN_NAME = "Logged In Name"
 
     lateinit var buttonLogIn : Button
     lateinit var etUserId : EditText
@@ -60,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         etPasswd = findViewById(R.id.et_password)
         tvForgot = findViewById(R.id.tv_forgot_passwd)
         tvForgot.setOnClickListener {
-            if (etUserId.text.length == 0){
+            if (etUserId.text.isEmpty()){
                 createWarningMessage("UserId")
             } else {
                 // Pop up message email will be sent
@@ -72,9 +70,9 @@ class MainActivity : AppCompatActivity() {
 
         buttonLogIn = findViewById(R.id.login_button)
         buttonLogIn.setOnClickListener(View.OnClickListener {
-            if (etUserId.text.length == 0) {
+            if (etUserId.text.isEmpty()) {
                 createWarningMessage("UserId")
-            } else if (etPasswd.text.length == 0) {
+            } else if (etPasswd.text.isEmpty()) {
                 createWarningMessage("Password")
             } else {
                 saveToSharedPref(etUserId.text.toString())
@@ -83,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        var signInGoogleButton: SignInButton = findViewById(R.id.google_sign_in_button)
+        val signInGoogleButton: SignInButton = findViewById(R.id.google_sign_in_button)
         signInGoogleButton.setSize(SignInButton.SIZE_WIDE)
         signInGoogleButton.setOnClickListener(View.OnClickListener {
             if (checkGoogleLogIn()) {
@@ -187,7 +185,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Check any log in status *** *** ***
-    fun checkLogInStatusAll(){
+    private fun checkLogInStatusAll(){
         // Check Facebook login status
         if (checkFacebookLogIn() || checkGoogleLogIn()){
             // Intent to MainActivityList with Shared Pref logged in name
@@ -198,7 +196,7 @@ class MainActivity : AppCompatActivity() {
     // Intent to List with Logged In Name *** *** ***
     fun jumpToList() {
         // Recover the last logged in name from Pref
-        var nameToSend : String? = retrieveFromSharedPref()
+        val nameToSend : String? = retrieveFromSharedPref()
 
         // Jump to List
         val i = Intent(this, MainActivityList::class.java)
@@ -233,17 +231,16 @@ class MainActivity : AppCompatActivity() {
     fun saveToSharedPref(name: String){
         val editor = getPreferences(MODE_PRIVATE).edit()
         editor.putString(SHARED_LOGGEDIN_NAME, name)
-        editor.commit()
+        editor.apply()
     }
 
     // Retrieve from SharedPrefs *** *** ***
-    fun retrieveFromSharedPref(): String? {
+    private fun retrieveFromSharedPref(): String? {
         val sharedPreferences = getPreferences(MODE_PRIVATE)
-        val loggedInName: String? = sharedPreferences.getString(SHARED_LOGGEDIN_NAME, null)
-        return loggedInName
+        return sharedPreferences.getString(SHARED_LOGGEDIN_NAME, null)
     }
 
-    fun fbLogOut(){
+    private fun fbLogOut(){
         if (checkFacebookLogIn()) {// if it is logged in to Facebook
         LoginManager.getInstance().logOut()
         showSnack()
@@ -251,32 +248,30 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     // Check if already logged in to Facebook
-    fun checkFacebookLogIn() : Boolean {
+    private fun checkFacebookLogIn(): Boolean {
         val accessToken = AccessToken.getCurrentAccessToken()
-        val isLoggedIn = accessToken != null && !accessToken.isExpired
-        return isLoggedIn
+        return (accessToken != null) && !accessToken.isExpired
     }
 
     // Check if already logged in o Google *** *** ***
-    fun checkGoogleLogIn() : Boolean {
-        var account : GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
+    private fun checkGoogleLogIn() : Boolean {
+        val account : GoogleSignInAccount? = GoogleSignIn.getLastSignedInAccount(this)
         return account != null
     }
 
     // Log in to Google *** *** ***
-    fun signInToGoogle(){
-        var signInIntent : Intent = mGoogleSignInClient.signInIntent
+    private fun signInToGoogle(){
+        val signInIntent : Intent = mGoogleSignInClient.signInIntent
         activityResultLauncher?.launch(signInIntent)
 
     }
 
     // Log out from Google *** *** ***
-    fun logOutFromGoogle(){
+    private fun logOutFromGoogle(){
         // is already logged in
         mGoogleSignInClient.signOut().addOnCompleteListener {
-            Log.i("ETIQUETA", "account logged out" )
+            Log.i(TAG, "account logged out" )
             // SnackBar show Use Logged out
             showSnack()
         }
@@ -288,7 +283,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onActivityResult(requestCode, resultCode, data)
 
-        Log.d(TAG, "Fb callback onActiviyResult data: " + data)
+        Log.d(TAG, "Fb callback onActivityResult data: $data")
     }
 
 

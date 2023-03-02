@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Windows 10/AndroidStudioProjects/LogInApp/app/src/main/res/drawable/progressdialog.xml" value="0.1475" />
+        <entry key="..\:/Users/Windows 10/AndroidStudioProjects/LogInApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Windows 10/AndroidStudioProjects/LogInApp/app/src/main/res/layout/custom_progressdialog.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/usuario/Downloads/Android/Example_Codes/LogInApp/app/src/main/res/drawable/black_error_outline_24.xml" value="0.1235" />
         <entry key="..\:/Users/usuario/Downloads/Android/Example_Codes/LogInApp/app/src/main/res/drawable/black_logout_24.xml" value="0.1255" />
         <entry key="..\:/Users/usuario/Downloads/Android/Example_Codes/LogInApp/app/src/main/res/drawable/green_check_circle_24.xml" value="0.1255" />
@@ -21,7 +24,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

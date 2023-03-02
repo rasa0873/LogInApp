@@ -23,7 +23,6 @@ class MainActivityList : AppCompatActivity(), JumpListener {
 
     var prodTitles: List<String>? = null
     var prodDescriptions: List<String>? = null
-    var prodPrices: List<String>? = null
 
     private var progressBar: ProgressBar? = null
 
@@ -31,15 +30,10 @@ class MainActivityList : AppCompatActivity(), JumpListener {
 
     var passedInName: String? = null
 
-    val TAG = "ETIQUETA"
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_list)
-
-
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -93,7 +87,6 @@ class MainActivityList : AppCompatActivity(), JumpListener {
 
         prodTitles = ArrayList()
         prodDescriptions = ArrayList()
-        prodPrices = ArrayList()
 
         (prodTitles as ArrayList<String>).add("Nylon Backpack")
         (prodTitles as ArrayList<String>).add("Dumb Bells")
@@ -114,7 +107,6 @@ class MainActivityList : AppCompatActivity(), JumpListener {
         (prodDescriptions as ArrayList<String>).add("Polyester grey and black T-shit")
         (prodDescriptions as ArrayList<String>).add("Light white cap. Made from comfortable cotton")
         (prodDescriptions as ArrayList<String>).add("Improve circulation, relax muscles, and reduce swelling")
-
 
 
         productDataArrayList!!.add(
